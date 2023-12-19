@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>ADD EXPERT</title>
+    <meta name="viewport" content="width=dvice-width, intial-scale=1.0">
+    <link rel="stylesheet" href="htmlprojet/sttyle.css">
+    <link rel="stylesheet" href="fati.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.6.0/remixicon.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">FANC</a>
+        <nav class="navbar">
+
+            <a href="home.html" class="ri-home-line" class="active">Home</a>
+            <a href="about.html" class="ri-information-line">About </a>
+            <a href="#services">Services</a>
+            <a href="profil.html" class="ri-user-line">Profil</a>
+            <a href="#search" class="ri-search-fill">Search</a>
+        </nav>
+        <div class="bx bx-moon " id="darkMode-icon "></div>
+        <div class="bx-bx-menu " id="menu-icon "></div>
+    </header>
+    <!-- home section design -->
+    <section class="home " id="home ">
+        <div class="home-content ">
+            <div class="f">
+                <form action="send.php" method="post">
+
+                    <h3> <i>Expert registration : </i> </h3>
+                    <br>
+
+                    <div class="f2"> <label for="fullname">USER-Name: </label>
+                        <input type="text" id="fullname" name="fullname" required>
+
+                        <label for="passw">Password: </label>
+                        <input type="password" id="passw" name="passw" required>
+                    </div>
+                    <br>
+                    <label for="id">Id:        </label>
+                    <input type="  " id="id" name="id" required>
+                    <label for="firstname">First Name: </label>
+                    <input type="text" id="firstname" name="firstname" required>
+
+                    <label for="familyname">Family Name: </label>
+                    <input type="text" id="familyname" name="familyname" required>
+
+                    <label for="birth">Birth date:</label>
+                    <input type="date" id="birth" name="birth" required>
+                    <br>
+
+                    <label for="eemail">Email: </label>
+                    <input type="email" id="eemail" name="eemail" pattern="[a-z0-9._%+\-]+@gmail.com">
+
+                    <label for="ephone"> phone number:</label>
+                    <input type="tel" id="ephone" name="ephone" placeholder="-- -- -- -- --" pattern="[0,5-7]{2}[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}" required>
+                    <br>
+                    <label for="ecity">Full Adress: </label>
+                    <select style="width:150px;" id="W" name="ecity">
+        <option name="ecity"> CITY </option> 
+         </select>
+                    <select style="width:150px;" id="D" name="ereg">
+        <option name="ereg"> Region </option> 
+         </select>
+                    <script>
+                        let wilaya = ["Adrar", "Chlef", "Laghouat"];
+                        let dairalagh = ["khnag", "SidiMakhlouf", "Assafia", "AinMadi", "BenNaserBenChouhra"];
+                        let dairaadrar = ["a1", "a2", "a3", "a4"];
+                        let dairachlef = ["c1", "c2", "c3 ", "c4"];
+
+                        let W = document.getElementById("W");
+                        let D = document.getElementById("D");
+
+                        wilaya.forEach(function addSpecies(item) {
+                            let option = document.createElement("option");
+                            option.text = item;
+                            option.value = item;
+                            W.appendChild(option);
+                        });
+
+                        W.onchange = function() {
+                            D.innerHTML = "<option></option>";
+                            if (this.value == "Adrar") {
+                                addToSlct2(dairaadrar);
+                            }
+                            if (this.value == "Chlef") {
+                                addToSlct2(dairachlef);
+                            }
+                            if (this.value == "Laghouat") {
+                                addToSlct2(dairalagh);
+                            }
+                        }
+
+                        function addToSlct2(arr) {
+                            arr.forEach(function(item) {
+                                let option = document.createElement("option");
+                                option.text = item;
+                                option.value = item;
+                                D.appendChild(option);
+                            });
+                        }
+                    </script>
+
+                    <input type="text" id="estr" name="estr" placeholder="Street" required>
+                    <input type="number" id="codep" name="codep" placeholder="Code postal" required>
+                    <br>
+                    <label for="ssn">Your social security Num: </label>
+                    <input type="number" id="ssn" name="ssn" required>
+
+                    <label for="icn">Identity card Num: </label>
+                    <input type="number" id="icn" name="icn" required>
+
+                    <label for="license">License Number: </label>
+                    <input type="number" id="license" name="license" required>
+
+                    <label for="ccp">CCP: </label>
+                    <input type="number" id="ccp" name="ccp" required> <br>
+            </div>
+        </div>
+        <br>
+        <div class="fbtn">
+            <button class="btn" type="submit" name="submitadd" onclick="addRow();"> ADD EXPERT</button>
+            <button class="btn" type="submit" id="submitupdate" name="submitupdat">  UPDATE_EXPERT</button>
+            <button class="btn" type="submit" id="submitdelete" name="submitdelete">  DELITE_EXPERT</button>
+        </div>
+
+
+        <div class="profession-container ">
+            <div class="profession-box ">
+                <div class="profession " style="--i:0; ">
+                </div>
+                <div class="profession " style="--i:1; ">
+                </div>
+                <div class="profession " style="--i:2; ">
+                </div>
+            </div>
+            <div class="overlay "></div>
+        </div>
+    </section> <br>
+    <br>
+
+    <div class="tabll">
+        <center>
+            <form action="addexprt.php" method="get">
+                <h2> <i>Table of Experts  : </i> </h2>
+                <table id="table" name="table" border="3">
+
+
+                    <tr bgcolor="grey">
+                        <th> ID Expert </th>
+                        <th> User name </th>
+                        <th> Password </th>
+                        <th> FisrtName </th>
+                        <th> FamilyName </th>
+                        <th> Birthday </th>
+                        <th> Email </th>
+                        <th> Phone</th>
+                        <th> City </th>
+                        <th> Region </th>
+                        <th> Street </th>
+                        <th> Code postal </th>
+                        <th> ssn </th>
+                        <th> icn </th>
+                        <th> Num License </th>
+                        <th> ccp </th>
+                    </tr>
+                    <!--
+                <?php 
+                $servername ="localhost";
+                $username ="root";
+                $password = "";
+                $dbname = "assurance";
+                
+                
+                 $con = mysqli_connect($servername,$username,$password,$dbname);
+                if(!$con){
+                echo " DATEBASE  NOT Connected ";
+                } else{
+                echo " DATEBASE  Connected ";
+                }    
+                
+                $quer="SELECT * FROM addexprt ";
+                $reslt=$con->query($quer);
+                
+                if(!$reslt){
+                dir("invalid".$con->error);
+                }
+                while($row = $reslt->fetch_assoc()){
+                
+                echo"<tr> 
+                <td> " .$row["id"]. "</td>
+                <td> " .$row["fullname"]." </td>
+                <td> " . $row["passw"] ." </td>
+                <td> " . $row["firstname"] ." </td>
+                <td> " . $row["familyname"] ." </td>
+                <td> " . $row["birth"] ." </td>
+                <td> " . $row["eemail"] ." </td>
+                <td> " . $row["ephone"] ." </td>
+                <td> " . $row["ecity"] ." </td>
+                <td> " . $row["ereg"] ." </td>
+                <td> " . $row["estr"] ." </td>
+                <td> " . $row["codep"] ." </td>
+                <td> " . $row["ssn"] ." </td>
+                <td> " . $row["icn"] ." </td>
+                <td> " . $row["license"] ." </td>
+                <td> " . $row["ccp"] ." </td>
+                
+                </tr>";
+                
+                }
+                
+                              ?>
+            -->
+
+                </table>
+            </form>
+            <center>
+                <script>
+                    function addRow() {
+                        var table = document.getElementById("table"),
+                            newRow = table.insertRow(table.length),
+                            cell1 = newRow.insertCell(1),
+                            cell2 = newRow.insertCell(2),
+                            cell3 = newRow.insertCell(3),
+                            cell4 = newRow.insertCell(4),
+                            cell5 = newRow.insertCell(5),
+                            cell6 = newRow.insertCell(6),
+                            cell7 = newRow.insertCell(7),
+                            cell8 = newRow.insertCell(8),
+                            cell9 = newRow.insertCell(9),
+                            cell10 = newRow.insertCell(10),
+                            cell11 = newRow.insertCell(11),
+                            cell12 = newRow.insertCell(12),
+                            cell13 = newRow.insertCell(13),
+                            fullname = document.getElementById("fullname").value,
+                            birth = document.getElementById("birth").value,
+                            passw = document.getElementById("passw").value,
+                            eemail = document.getElementById("eemail").value,
+                            ephone = document.getElementById("ephone").value,
+                            ecity = document.getElementById("ecity").value,
+                            ereg = document.getElementById("ereg").value,
+                            estr = document.getElementById("estr").value,
+                            codep = document.getElementById("codep").value,
+                            ssn = document.getElementById("ssn").value,
+                            icn = document.getElementById("icn").value,
+                            license = document.getElementById("license").value,
+                            ccp = document.getElementById("ccp").value;
+
+
+
+                        cell1.innerHTML = fullname;
+                        cell2.innerHTML = birth;
+                        cell3.innerHTML = passw;
+                        cell4.innerHTML = eemail;
+                        cell5.innerHTML = ephone;
+                        cell6.innerHTML = ecity;
+                        cell7.innerHTML = ereg;
+                        cell8.innerHTML = estr;
+                        cell9.innerHTML = codep;
+                        cell10.innerHTML = ssn;
+                        cell11.innerHTML = icn;
+                        cell12.innerHTML = license;
+                        cell13.innerHTML = ccp;
+                    }
+                </script>
+    </div>
+
+
+</body>
+
+</html>
